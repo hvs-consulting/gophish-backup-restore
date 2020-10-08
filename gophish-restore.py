@@ -96,7 +96,6 @@ def perform_purge(api):
     for sending_profile in api.smtp.get():
         s_id = sending_profile.as_dict()['id']
         api.smtp.delete(s_id)
-    input()
 
 
 def main():
