@@ -30,7 +30,7 @@ def restore_landing_pages(api, zf, unsafe):
         json_loaded = json.loads(zf.read(element))
         html_filename = basename + '.html'
         if html_filename in filenames:
-            html = str(zf.read(html_filename))
+            html = zf.read(html_filename).decode()
             json_loaded['html'] = html
         parsed_model = gophish.models.Page.parse(json_loaded) 
         try:
@@ -51,11 +51,11 @@ def restore_templates(api, zf, unsafe):
         json_loaded = json.loads(zf.read(element))
         html_filename = basename + '.html'
         if html_filename in filenames:
-            html = str(zf.read(html_filename))
+            html = zf.read(html_filename).decode()
             json_loaded['html'] = html
         txt_filename = basename + '.txt'
         if txt_filename in filenames:
-            txt = str(zf.read(txt_filename))
+            txt = zf.read(txt_filename).decode()
             json_loaded['text'] = txt
         attachments = []
         for attachment_name in attachment_names:
